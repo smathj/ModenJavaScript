@@ -14,7 +14,7 @@
 
         .butn {
             /* border : 1px solid blue; */
-            width: 200px;
+            /* width: 200px; */
             height: 25px;
             /* display: inline-block; */
             text-align: center;
@@ -45,6 +45,8 @@
         <span onclick="add()">추가</span>
         <span onclick="del()">삭제_js</span>
         <span onclick="del_jq()">삭제_jq</span>
+        <span onclick="del_jq_check()">체크_jq</span>
+        
     </div>
 
     <div class="outer">
@@ -91,7 +93,7 @@
             });
 
             let html  = '<tr>';
-                html += '<td><input type="checkbox"/></td>';
+                html += '<td><input name="chekbox" type="checkbox"/></td>';
                 html += '<td>동경'+ num +'</td>';
                 html += '<td>왜구</td>';
                 html += '</tr>';
@@ -131,6 +133,17 @@
             for(let i=checkRows.length-1; i>-1; i--) {
                 checkRows.eq(i).closest('tr').remove();
             }
+        }
+
+        function del_jq_check() {
+            let checkRows = $("[name='chekbox']:checked");
+            console.log(checkRows);
+            console.log(checkRows.length);
+            // console.log(checkRows.eq(0));
+            // console.log(checkRows.eq(0).closest);
+            // console.log(checkRows.eq(0).closest('tr'));
+
+            
         }
     </script>
 </body>

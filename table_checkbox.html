@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        thead {
+            background-color: lightgreen;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="javascript:Delete();">체크항목삭제</a>
+    <table id="tbReworkProcess"   border="1">
+        <thead>
+            <th><input name="cbx_chkAll" id="cbx_chkAll" type="checkbox" onclick="allCheck()"/></th>
+            <th>테스트1</th>
+            <th>테스트2</th>
+            <th>테스트3</th>
+            <th>테스트4 </th>
+            <!-- <th>테스트5</th>  -->
+        </thead>
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var appendText = "";
+
+            appendText = "<tr>";
+            appendText += "<td class='textCenter'><input id='chk' name='chk' type='checkbox' /></td>";
+            appendText += "<td class='textCenter' style='display:none'>" + "테스트1 " + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "</tr>";
+
+            appendText += "<tr>";
+            appendText += "<td class='textCenter'><input id='chk' name='chk' type='checkbox' /></td>";
+            appendText += "<td class='textCenter' style='display:none'>" + "테스트1 " + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "</tr>";
+
+            appendText += "<tr>";
+            appendText += "<td class='textCenter'><input id='chk' name='chk' type='checkbox' /></td>";
+            appendText += "<td class='textCenter' style='display:none'>" + "테스트1 " + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "</tr>";
+
+            appendText += "<tr>";
+            appendText += "<td class='textCenter'><input id='chk' name='chk' type='checkbox' /></td>";
+            appendText += "<td class='textCenter' style='display:none'>" + "테스트1 " + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "</tr>";
+
+            appendText += "<tr>";
+            appendText += "<td class='textCenter'><input id='chk' name='chk' type='checkbox' /></td>";
+            appendText += "<td class='textCenter' style='display:none'>" + "테스트1 " + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "</tr>";
+
+            appendText += "<tr>";
+            appendText += "<td class='textCenter'><input id='chk' name='chk' type='checkbox' /></td>";
+            appendText += "<td class='textCenter' style='display:none'>" + "테스트1 " + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트"  + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "<td class='textCenter'>" + "테스트" + "</td>";
+            appendText += "</tr>";
+
+
+            // console.log(appendText);
+
+            $("#tbReworkProcess tbody").append(appendText);
+
+        });
+     </script>
+    
+    <script>
+       function Delete() {
+            // $("#tbReworkProcess input[type='checkbox']:checked").parent().parent().remove();
+
+            // 헤더는 다른 name값을 줘서 삭제안되도록 하자
+            $("#tbReworkProcess input[name='chk']:checked").parent().parent().remove();
+       }
+
+       function allCheck() {
+            if($("#cbx_chkAll").is(":checked")) {
+                $("input[name=chk]").prop("checked", true);
+
+
+                let total = $("input[name=chk]").length;
+                let checked = $("input[name=chk]:checked").length;
+                console.log('전체 체크박스 갯수', total);
+                console.log('체크된 박스 갯수', checked);
+            }
+            else {
+                $("input[name=chk]").prop("checked", false);  
+                
+                let total = $("input[name=chk]").length;
+                let checked = $("input[name=chk]:checked").length;
+                console.log('전체 체크박스 갯수', total);
+                console.log('체크된 박스 갯수', checked);
+            } 
+        
+
+            // $("input[name=chk]").click(function() {
+            //     var total = $("input[name=chk]").length;
+            //     var checked = $("input[name=chk]:checked").length;
+
+            //     if(total != checked) $("#cbx_chkAll").prop("checked", false);
+            //     else $("#cbx_chkAll").prop("checked", true); 
+            // });    
+     }
+
+    </script>
+</body>
+</html>
