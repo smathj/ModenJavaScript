@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer {
+            border : 1px solid blue;
+            width: 150px;
+            border-radius: 5px;
+            margin: auto;
+            
+        }
+
+        .butn {
+            /* border : 1px solid blue; */
+            width: 200px;
+            height: 25px;
+            /* display: inline-block; */
+            text-align: center;
+            border-radius: 5px;
+            margin: auto;
+            /* background-color: gold; */
+
+        }
+
+        span {
+            border: 1px solid black;
+            border-radius: 5px;
+            line-height: 25px;
+            background-color: lightgreen;
+        }
+        
+        /* button {
+            
+        } */
+    </style>
+
+</head>
+<body>
+    <div class="butn">
+        <!-- <button onclick="add()">추가</button>
+        <button onclick="del()">삭제</button>
+        <button onclick="del_jq()">삭제2</button> -->
+        <span onclick="add()">추가</span>
+        <span onclick="del()">삭제_js</span>
+        <span onclick="del_jq()">삭제_jq</span>
+    </div>
+
+    <div class="outer">
+        <table>
+            <thead>
+                <th><input type="checkbox" /></th>
+                <th>제목</th>
+                <th>기타</th>
+            </thead>
+            <tbody id="my_tbody">
+                <tr>
+                    <td><input name="chekbox" type="checkbox"/></td>
+                    <td>나북이</td>
+                    <td>견주인</td>
+                </tr>
+                <tr>
+                    <td><input name="chekbox" type="checkbox"/></td>
+                    <td>하북이</td>
+                    <td>도베르만</td>
+                </tr>
+                <tr>
+                    <td><input name="chekbox" type="checkbox"/></td>
+                    <td>키북이</td>
+                    <td>농담곰</td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        let num =1;
+
+        function add() {
+
+            let myTest = $('#my_tbody').find('tr');
+            console.log(myTest);
+            
+            $.each(myTest,function(index,value) {
+                console.log(index,value);
+            });
+
+            let html  = '<tr>';
+                html += '<td><input type="checkbox"/></td>';
+                html += '<td>동경'+ num +'</td>';
+                html += '<td>왜구</td>';
+                html += '</tr>';
+
+                $('#my_tbody').append(html);   
+
+                num++;
+        }
+
+
+
+/////////////////////////////////////////////////////////////////
+        function del() {
+
+            let tableData = document.getElementById('my_tbody');
+            console.log(tableData.rows[0].cells[1]);
+            console.log(tableData.rows[0].cells[1].childNodes[0]);
+
+            for(let i=0; i<tableData.rows.length; i++) {
+
+                // console.log(tableData.rows[i].cells[0].childNodes[0]);
+
+                let chkbox = tableData.rows[i].cells[0].childNodes[0].checked;
+
+                if(chkbox) {
+                    tableData.deleteRow(i);
+                    i--;
+                }
+            }
+        }
+
+/////////////////////////////////////////////////////////////////
+        function del_jq() {
+            let checkRows = $("[name='chekbox']:checked");
+            console.log(checkRows);
+            console.log(checkRows.length);
+            for(let i=checkRows.length-1; i>-1; i--) {
+                checkRows.eq(i).closest('tr').remove();
+            }
+        }
+    </script>
+</body>
+</html>
